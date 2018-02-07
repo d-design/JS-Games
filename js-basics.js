@@ -34,6 +34,7 @@
 	
 	userinput();
 
+
 	function player(name, score){
 		"use strict";
 		
@@ -45,6 +46,32 @@
 		};
 	}
 
-	var newplayer = new player('Daniel', 100);
-	
+	var newplayer = new player('Daniel', 100);	
 	newplayer.greeting();
+
+	//arrays  - players and their scores
+	
+	//Creating and n dimentional array using literal notation
+	var playerScore = [
+		['Jessica', 0], 
+		['Daniel', 10],
+		['Morten', 6],
+		['Simone', 1],
+	];
+
+	playerScore.push['Peter', 2];
+
+	console.log(playerScore);
+
+var output1 = document.getElementById("output1");
+
+ function getplayers(){
+	 "use strict";
+		for(var i = 0; i < playerScore.length; i++) {
+		  output1.innerHTML += ' Your score: ' + playerScore[i] + '<br>';
+	 }
+ }
+
+getplayers();
+
+

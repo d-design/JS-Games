@@ -3,12 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>Simple Quiz with arrays</title>
+</head>
+
+<body>
+<p id="message"></p>
+	
+	
 <script type="text/javascript">
 	
 	var questions = [							 
 		['How many moons does Earth have?', 1],					 
 		['How many moons does Saturn have?', 31],
-		['How many moons does Venus have?', 0]	
+		['How many moons does Venus have?', 0],	
+		['What is 2 + 2?', 4],
+		['What is 2000 + 2000 + 1000 - 850?', 4150]
+		
 	];
 	
 	/****************************
@@ -23,10 +32,49 @@
 	
 	****************************/
 		
-</script>
-</head>
+var correctAnswers = 0;
+var question;
+var answer;
+var response;
+var correct = [];
+var wrong = [];
 
-<body>
-<p id="message"></p>
+function ShowResult(message) {
+  var msg = document.getElementById('message');
+  msg.innerHTML = message;
+}
+
+function CorrectOrWrongList(arr) {
+  var listHTML = '<ol>';
+  for (var i = 0; i < arr.length; i++) {
+    listHTML += '<li>' + arr[i] + '</li>';
+  }
+  listHTML += '</ol>';
+  return listHTML;
+}
+	
+for (var i = 0; i < questions.length; i += 1) {
+  question = questions[i][0];
+  answer = questions[i][1];
+  responseObject = prompt(question);
+  response = parseInt(responseObject);
+  if (response === answer) {
+    correctAnswers += 1;
+    correct.push(question + ' Your answer ' + response);
+	alert('Correct!')
+  } else {
+    wrong.push(question + ' Your answer was ' + response + ' | The correct answer is ' + answer + '<br><br>');
+	alert('Sorry! the correct answer is ' + answer)
+  }
+}
+
+html = "You got " + correctAnswers + " question(s) right out of " + questions.length;
+html += '<h2>You got these questions correct:</h2>'
+html += CorrectOrWrongList(correct);
+html += '<h2>You got these questions wrong:</h2>'
+html += CorrectOrWrongList(wrong);
+ShowResult(html);
+	
+</script>
 </body>
 </html>
