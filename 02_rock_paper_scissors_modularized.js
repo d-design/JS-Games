@@ -11,11 +11,46 @@ var resultDisplay = document.getElementById("result"); // display the game resul
 // other global variables
 var computerChoice;
 var userChoice;
+var result;
 
 // main function containing the game logic
 function play(){
+    // "this" in a javascript function context refer to the current owner of the event (the item that was clicked).
 	userChoice = this.id; // registering the buttons id!
 	computerInput();
 	compare();
-	display();	
+	display();
+}
+
+function computerInput(){
+    switch(Math.floor(Math.random() * 3)) {
+        case 0:
+            computerChoice = "Rock";
+            break;
+        case 1:
+            computerChoice = "Paper";
+            break;
+        case 2:
+            computerChoice = "Scissors";
+            break;
+        default:
+            computerChoice = "Paper";
+    }
+    
+}
+
+function compare(){
+    if((userChoice == "Rock" && computerChoice == "Scissors") || (userChoice == "Paper" && computerChoice == "Rock") || (userChoice == "Scissors" && computerChoice == "Paper")){
+       result = "You win... Well done!";
+    } else if(userChoice == computerChoice){
+        result = "It's a draw";
+    } else {
+        result = "Computer wins... Bad luck";
+    }
+}
+
+function display(){
+    computerChoiceDisplay.innerHTML = computerChoice;
+    playerChoiceDisplay.innerHTML = userChoice;
+    resultDisplay.innerHTML = result;
 }
