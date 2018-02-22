@@ -8,7 +8,7 @@ var myGame = (function () {
 	var computerChoiceDisplay = document.getElementById("computer_choice"); // display computer's choice
 	var resultDisplay = document.getElementById("result"); // display the game result
 
-	// functions
+	// functions variables
 	var computerInput;
 	var compare;
 	var display;

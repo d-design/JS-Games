@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Launch a Rocket (ECMA class syntax)</title>
+<script type="text/javascript">
+	
+	class Rocket {
+		
+		// The constructor method is a special method for creating and initializing an object created with a class. 
+		constructor(description, engines){
+				this.description = description;
+                this.engines = engines; 
+                this.fuel = 0; // <-- calculate as gallons, input is liter
+		}
+        
+        
+		// class method
+		describeYourself(){
+			console.log('I am a '+ this.description + ' with ' + this.engines + ' engines');
+		}
+        
+        //A getter 
+        //MDN: Binds an objects properties to a function that will be called when the property is looked up. 
+        get tank(){
+            return 'tank is filled with ' + this.fuel + ' gallons.'
+        }
+        
+        //MDN: .... Binds an objects property to a function to be called when there is an attempt to set the property
+        set tank(liter){
+            this.fuel = liter * 0.26;
+        }
+        
+        //a static class method
+        static distressSignal(){
+            console.log('Houston, we have a problem!')
+        }
+		
+	// class end	
+	}
+    
+    // INHERINTANCE - Creating a sub-class extending Rocket 
+    class Saturn extends Rocket {
+        
+        constructor(){
+            //Super call to the super class --> referring to the super class "Rocket" by using -->  super()
+            super("Saturn V", 4);
+            //additional class property
+            this.enginetype = 'F-1';
+        }
+        
+        //additional class method 
+        addLoad(load){
+            console.log('Load: ' + load);
+        }
+        
+        describeYourself(){
+            super.describeYourself();
+            console.log('Enginetype: '+ this.enginetype);
+        }
+    //sub class end
+    }
+    
+    
+    var firstrocket = new Rocket('Apollo', 4);
+    firstrocket.describeYourself();
+    console.log(firstrocket.tank);
+    firstrocket.tank = 20000;
+    console.log(firstrocket.tank);
+    Rocket.distressSignal();
+    
+    var SaturnRocket = new Saturn();
+    SaturnRocket.describeYourself();
+    SaturnRocket.addLoad('Lunar roving vehicle');
+
+    
+</script>
+</head>
+
+<body>
+</body>
+</html>
