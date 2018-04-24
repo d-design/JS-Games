@@ -111,21 +111,13 @@ update: function () {
 			tween = game.add.tween(GameOver).to({
 				y: game.world.centerY
 			}, 1500, Phaser.Easing.Bounce.Out, !0);
-			playagain = game.add.button(game.world.centerX, game.world.centerY + 60, 'button', this.actionOnClick, this, 2, 1, 0);
-			playagain.anchor.set(0.5);
+
 		}
 		
 		Countdown.text = total;
 
 	},
 	
-	actionOnClick: function() {
-		total = 10;
-		score = 0;
-    	game.state.start('before1');
-		
-
-},
 	
 	
 }
